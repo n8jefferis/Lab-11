@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Lab_11
 {
-    class Movie
+    public abstract class Movie
     {
         public string Title { get; set; }
         public string Category { get; set; }
-        public int RunTime { get; set; }
+        public int RunTime { get; set; }                                                                                        
         public List<string> Scenes { get; set; }
 
         public Movie(string Title, string Category, int RunTime, List<string> Scenes)
@@ -45,6 +45,11 @@ namespace Lab_11
         {
             Console.WriteLine("The play method only works on physical media");
         } 
+
+        public void PlayWholeMovie()
+        {
+            PrintScenes();
+        }
 
         
 

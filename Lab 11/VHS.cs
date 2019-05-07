@@ -10,31 +10,34 @@ namespace Lab_11
     {
         public int CurrentTime { get; set; }
 
-        public VHS(string Title, string Category, int RunTime, List<string> Scenes) 
+        public VHS(string Title, string Category, int RunTime, List<string> Scenes)
             : base(Title, Category, RunTime, Scenes)
         {
-            this.CurrentTime = CurrentTime;
-            
+            CurrentTime = 0;
+
 
         }
 
         public override void Play()
         {
             //plays the scene at the current time and then increments CurrentTime.
-            int i;
-            for (i = 0; i < RunTime; i++)
+            if (CurrentTime < Scenes.Count)
             {
-                CurrentTime = i;
-
-
-                string scene = Scenes[0];
+                string scene = Scenes[CurrentTime];
                 Console.WriteLine(scene);
+                CurrentTime++;
+            }
+            else
+            {
+                Rewind();
             }
         }
 
         public void Rewind()
         {
             //returns nothing and sets CurrentTime to 0.
+            Console.WriteLine("Movie done, rewinding...");
+            Console.WriteLine();
             CurrentTime = 0;
         }
 

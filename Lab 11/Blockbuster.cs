@@ -8,11 +8,26 @@ namespace Lab_11
 {
     class Blockbuster
     {
-        List<Movie> Movies = new List<Movie>() {m,;
+        List<Movie> Movies { get; set; }
+
+        public Blockbuster()
+        {
+            Movies = new List<Movie>();
+            List<string> DumbScenes = new List<string>() { "swindle blind kid", "kill gas man" };
+            VHS dumbDumber = new VHS("Dumb and Dumbber", "Comedy", 120, DumbScenes);
+            Movies.Add(dumbDumber);
+
+        }
+
 
         public void PrintMovies()
         {
-            Console.WriteLine(Movies);
+            for(int i =0; i < Movies.Count; i++)
+            {
+                Movie m = Movies[i];
+                Console.WriteLine($"{i}:{m.Title}");
+            }
+            
         }
 
         public void Checkout()
@@ -25,11 +40,9 @@ namespace Lab_11
             string input = Console.ReadLine();
             int index = int.Parse(input);
             //Use inputed index to grab a movie from the list
-            string Movie = Movies[index];
-            Console.WriteLine(scene);
-            PrintInfo();
-            //Play movie
-            Play();
+            Movie m = Movies[index];
+            
+            m.Play();
 
 
         }
